@@ -44,15 +44,15 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>true</LinkIncremental>
-    <OutDir>$(SolutionDir)bin\$(Configuration)\</OutDir>
-    <IntDir>$(SolutionDir)bin\int\$(Configuration)\</IntDir>
+    <OutDir>$(SolutionDir)bin\out\$(Configuration)\$(Platform)\</OutDir>
+    <IntDir>$(SolutionDir)bin\obj\$(Configuration)\$(Platform)\</IntDir>
     <IncludePath>E:\Dev\GitHub\CNXEngine2D\CNXEngine2D\includes;$(IncludePath)</IncludePath>
     <LibraryPath>E:\Dev\GitHub\CNXEngine2D\CNXEngine2D\lib;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <LinkIncremental>false</LinkIncremental>
-    <OutDir>$(SolutionDir)bin\$(Configuration)\</OutDir>
-    <IntDir>$(SolutionDir)bin\int\$(Configuration)\</IntDir>
+    <OutDir>$(SolutionDir)bin\out\$(Configuration)\$(Platform)\</OutDir>
+    <IntDir>$(SolutionDir)bin\obj\$(Configuration)\$(Platform)\</IntDir>
     <IncludePath>E:\Dev\GitHub\CNXEngine2D\CNXEngine2D\includes;$(IncludePath)</IncludePath>
     <LibraryPath>E:\Dev\GitHub\CNXEngine2D\CNXEngine2D\lib;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
@@ -90,7 +90,7 @@
     <ClCompile Include="src\Quadtree.cpp" />
     <ClCompile Include="src\IndexBuffer.cpp" />
     <ClCompile Include="src\Renderer.cpp" />
-    <ClCompile Include="src\glad.c" />
+    <ClCompile Include="lib\glad.c" />
     <ClCompile Include="src\Application.cpp" />
     <ClCompile Include="src\VertexBuffer.cpp" />
     <ClCompile Include="src\VertexArray.cpp" />
