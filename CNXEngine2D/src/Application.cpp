@@ -21,7 +21,7 @@ int main()
     glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 6);
     glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
 
-    GLFWwindow* window = glfwCreateWindow(SCR_WIDTH, SCR_HEIGHT, "Cyn1x Quadtree", NULL, NULL);
+    GLFWwindow* window = glfwCreateWindow(SCR_WIDTH, SCR_HEIGHT, "CNXEngine2D", NULL, NULL);
     if (window == NULL)
     {
         std::cout << "Failed to create GLFW window" << std::endl;
@@ -159,6 +159,9 @@ static GLuint CreateShader(const std::string& vertextShader, const std::string& 
 
     glDetachShader(shaderProgram, vs);
     glDetachShader(shaderProgram, fs);
+
+    glDeleteShader(vs);
+    glDeleteShader(fs);
 
     return shaderProgram;
 }

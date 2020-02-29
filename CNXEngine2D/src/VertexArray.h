@@ -5,7 +5,7 @@
 class VertexArray
 {
 private:
-	GLuint m_RendererID;
+	GLuint VertexArrayID;
 public:
 	VertexArray();
 	~VertexArray();

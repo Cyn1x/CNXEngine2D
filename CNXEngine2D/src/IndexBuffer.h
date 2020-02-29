@@ -5,8 +5,8 @@
 class IndexBuffer
 {
 private:
-	GLuint m_RendererID;
-	GLuint m_Count;
+	GLuint IndexBufferID;
+	GLuint IndexCount;
 public:
 	IndexBuffer(const GLvoid* data, GLuint size);
 	~IndexBuffer();
