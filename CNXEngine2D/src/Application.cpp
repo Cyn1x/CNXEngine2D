@@ -5,11 +5,10 @@
 
 #include "VertexBuffer.h"
 #include "IndexBuffer.h"
+#include "Shader.h"
 
 void framebufferSizeCallback(GLFWwindow* window, int width, int height);
 void processInput(GLFWwindow* window);
-static GLuint CompileShader(GLuint type, const std::string& source);
-static GLuint CreateShader(const std::string& vertextShader, const std::string& fragmentShader);
 
 const GLuint SCR_WIDTH = 800;
 const GLuint SCR_HEIGHT = 600;
@@ -40,11 +39,11 @@ int main()
 
     std::cout << "OpenGL Version: " << glGetString(GL_VERSION) << std::endl;
 
-    float vertices[] = {
+    GLfloat vertices[] = {
         -0.5f, -0.5f,
          0.5f, -0.5f,
          0.5f,  0.5f,
-        -0.5f,  0.5f,
+        -0.5f,  0.5f
     };
 
     GLuint indices[] = {
@@ -60,31 +59,14 @@ int main()
     VertexBuffer* VBO = new VertexBuffer(vertices, 4 * 2 * sizeof(GLfloat));
     IndexBuffer* IBO = new IndexBuffer(indices, 6);
 
-    glEnableVertexAttribArray(0);
+    Shader shader("assets/shaders/VertexShader.glsl", "assets/shaders/FragmentShader.glsl");
+    shader.Bind();
+    shader.SetUniform4f("vertexColor", 1.0f);
+
     glVertexAttribPointer(0, 2, GL_FLOAT, GL_FALSE, 2 * sizeof(GLfloat), (void*)0);
+    glEnableVertexAttribArray(0);
 
-    std::string vertexShader =
-        "#version 330 core\n"
-        "\n"
-        "layout(location = 0) in vec4 position;\n"
-        "\n"
-        "void main()\n"
-        "{\n"
-        "	gl_Position = position;\n"
-        "}\n";
-
-    std::string fragmentShader =
-        "#version 330 core\n"
-        "\n"
-        "layout(location = 0) out vec4 color;\n"
-        "\n"
-        "void main()\n"
-        "{\n"
-        "	color = vec4(0.2, 0.2, 1.0, 1.0);\n"
-        "}\n";
-
-    GLuint shaderProgram = CreateShader(vertexShader, fragmentShader);
-    glUseProgram(shaderProgram);
+    shader.UnBind();
 
     while (!glfwWindowShouldClose(window))
     {
@@ -93,6 +75,11 @@ int main()
         glClear(GL_COLOR_BUFFER_BIT);
         glClearColor(0.1f, 0.1f, 0.1f, 1.0f);
 
+        shader.Bind();
+        shader.SetUniform1f("vertexColor", 0.2f);
+        shader.SetUniform2f("vertexColor", 0.2f);
+        shader.SetUniform3f("vertexColor", 1.0f);
+        shader.SetUniform4f("vertexColor", 1.0f);
         glBindVertexArray(VAO);
         glDrawElements(GL_LINE_STRIP, 6, GL_UNSIGNED_INT, nullptr);
 
@@ -100,7 +87,6 @@ int main()
         glfwPollEvents();
     }
 
-    glDeleteProgram(shaderProgram);
     glDeleteVertexArrays(1, &VAO);
 
     delete VBO, IBO;
@@ -119,49 +105,4 @@ void processInput(GLFWwindow* window)
 {
     if (glfwGetKey(window, GLFW_KEY_ESCAPE) == GLFW_PRESS)
         glfwSetWindowShouldClose(window, true);
-}
-
-static GLuint CompileShader(GLuint type, const std::string& source)
-{
-    GLuint id = glCreateShader(type);
-    const GLchar* src = source.c_str();
-    glShaderSource(id, 1, &src, nullptr);
-    glCompileShader(id);
-
-    GLint result;
-    glGetShaderiv(id, GL_COMPILE_STATUS, &result);
-    if (result == GL_FALSE)
-    {
-        GLint length;
-        glGetShaderiv(id, GL_INFO_LOG_LENGTH, &length);
-        GLchar* message = (GLchar*)_malloca(length * sizeof(GLchar));
-        glGetShaderInfoLog(id, length, &length, message);
-        std::cout << "Failed to compile " << (type == GL_VERTEX_SHADER ? "vertex" : "fragment") << " shader" << std::endl;
-        glDeleteShader(id);
-        _freea(message);
-
-        return 0;
-    }
-
-    return id;
-}
-
-static GLuint CreateShader(const std::string& vertextShader, const std::string& fragmentShader)
-{
-    GLuint shaderProgram = glCreateProgram();
-    GLuint vs = CompileShader(GL_VERTEX_SHADER, vertextShader);
-    GLuint fs = CompileShader(GL_FRAGMENT_SHADER, fragmentShader);
-
-    glAttachShader(shaderProgram, vs);
-    glAttachShader(shaderProgram, fs);
-    glLinkProgram(shaderProgram);
-    glValidateProgram(shaderProgram);
-
-    glDetachShader(shaderProgram, vs);
-    glDetachShader(shaderProgram, fs);
-
-    glDeleteShader(vs);
-    glDeleteShader(fs);
-
-    return shaderProgram;
 }
