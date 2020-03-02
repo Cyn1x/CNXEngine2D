@@ -97,28 +97,28 @@ void Shader::UnBind()
 void Shader::SetUniform1f(const std::string& name, GLfloat value)
 {
     m_UniformFloats[0] = value;
-    glUniform1f(getUniformLocation(name), value);
+    glUniform1f(GetUniformLocation(name), value);
 }
 
 void Shader::SetUniform2f(const std::string& name, GLfloat value)
 {
     m_UniformFloats[1] = value;
-    glUniform2f(getUniformLocation(name), m_UniformFloats[0], value);
+    glUniform2f(GetUniformLocation(name), m_UniformFloats[0], value);
 }
 
 void Shader::SetUniform3f(const std::string& name, GLfloat value)
 {
     m_UniformFloats[2] = value;
-    glUniform3f(getUniformLocation(name), m_UniformFloats[0], m_UniformFloats[1], value);
+    glUniform3f(GetUniformLocation(name), m_UniformFloats[0], m_UniformFloats[1], value);
 }
 
 void Shader::SetUniform4f(const std::string& name, GLfloat value)
 {
     m_UniformFloats[3] = value;
-    glUniform4f(getUniformLocation(name), m_UniformFloats[0], m_UniformFloats[1], m_UniformFloats[2], value);
+    glUniform4f(GetUniformLocation(name), m_UniformFloats[0], m_UniformFloats[1], m_UniformFloats[2], value);
 }
 
-GLuint Shader::getUniformLocation(const std::string& name)
+GLuint Shader::GetUniformLocation(const std::string& name)
 {
     if (m_UniformLocationCache.find(name) != m_UniformLocationCache.end())
         return m_UniformLocationCache[name];

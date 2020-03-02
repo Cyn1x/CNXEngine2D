@@ -29,5 +29,5 @@ private:
 	std::string ParseShader(const std::string& filepath);
 	GLuint CreateShader(const std::string& vertextShader, const std::string& fragmentShader);
 	GLuint CompileShader(GLuint type, const std::string& source);
-	GLuint getUniformLocation(const std::string& name);
+	GLuint GetUniformLocation(const std::string& name);
 };

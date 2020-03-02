@@ -1,41 +1,19 @@
+#include "Application.h"
 
-#include <glad/glad.h>
-#include <GLFW/glfw3.h>
-#include <iostream>
-
-#include "VertexBuffer.h"
-#include "IndexBuffer.h"
-#include "Shader.h"
-
-void framebufferSizeCallback(GLFWwindow* window, int width, int height);
-void processInput(GLFWwindow* window);
-
-const GLuint SCR_WIDTH = 800;
-const GLuint SCR_HEIGHT = 600;
-
-int main()
+Application::Application()
 {
-    glfwInit();
-    glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 4);
-    glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 6);
-    glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
 
-    GLFWwindow* window = glfwCreateWindow(SCR_WIDTH, SCR_HEIGHT, "CNXEngine2D", NULL, NULL);
-    if (window == NULL)
-    {
-        std::cout << "Failed to create GLFW window" << std::endl;
-        glfwTerminate();
-        return -1;
-    }
-    
-    glfwMakeContextCurrent(window);
-    glfwSetFramebufferSizeCallback(window, framebufferSizeCallback);
+}
 
-    if (!gladLoadGLLoader((GLADloadproc)glfwGetProcAddress))
-    {
-        std::cout << "Failed to initialize GLAD" << std::endl;
-        return -1;
-    }
+Application::~Application()
+{
+
+}
+
+void Application::Run()
+{
+    Window GLFW(800, 600);
+    GLFWwindow* window = GLFW.GetWindow();
 
     std::cout << "OpenGL Version: " << glGetString(GL_VERSION) << std::endl;
 
@@ -70,7 +48,7 @@ int main()
 
     while (!glfwWindowShouldClose(window))
     {
-        processInput(window);
+        GLFW.ProcessInput(window);
 
         glClear(GL_COLOR_BUFFER_BIT);
         glClearColor(0.1f, 0.1f, 0.1f, 1.0f);
@@ -90,19 +68,4 @@ int main()
     glDeleteVertexArrays(1, &VAO);
 
     delete VBO, IBO;
-
-    glfwTerminate();
-
-    return 0;
-}
-
-void framebufferSizeCallback(GLFWwindow* window, int width, int height)
-{
-    glViewport(0, 0, SCR_WIDTH, SCR_HEIGHT);
-}
-
-void processInput(GLFWwindow* window)
-{
-    if (glfwGetKey(window, GLFW_KEY_ESCAPE) == GLFW_PRESS)
-        glfwSetWindowShouldClose(window, true);
 }
