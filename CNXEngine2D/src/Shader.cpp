@@ -8,10 +8,8 @@ Shader::Shader(const std::string& vertexShaderFilepath, const std::string& fragm
 {
     std::string vertexShaderCode = ParseShader(vertexShaderFilepath);
     std::string fragmentShaderCode = ParseShader(fragmentShaderFilepath);
-    
-    for (int i = 0; i < sizeof(GLfloat); i++)
-        m_UniformFloats.push_back(1.0f);
 
+    SetDefaultShaders();
     m_ShaderProgramID = CreateShader(vertexShaderCode, fragmentShaderCode);
 }
 
@@ -92,6 +90,12 @@ void Shader::Bind()
 void Shader::UnBind()
 {
     glUseProgram(0);
+}
+
+void Shader::SetDefaultShaders()
+{
+    for (int i = 0; i < sizeof(GLfloat); i++)
+        m_UniformFloats.push_back(1.0f);
 }
 
 void Shader::SetUniform1f(const std::string& name, GLfloat value)
