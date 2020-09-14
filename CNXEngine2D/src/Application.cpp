@@ -10,7 +10,7 @@ Application::~Application()
 
 }
 
-void GLAPIENTRY MessageCallback(
+void GLAPIENTRY Application::MessageCallback(
     GLenum source,
     GLenum type,
     GLuint id,
@@ -30,6 +30,9 @@ void Application::Run()
     GLFWwindow* window = GLFW.GetWindow();
 
     std::cout << "OpenGL Version: " << glGetString(GL_VERSION) << std::endl;
+
+    glEnable(GL_DEBUG_OUTPUT);
+    glDebugMessageCallback(MessageCallback, 0);
 
     GLfloat vertices[] = {
         -0.5f, -0.5f,
