@@ -10,6 +10,20 @@ Application::~Application()
 
 }
 
+void GLAPIENTRY MessageCallback(
+    GLenum source,
+    GLenum type,
+    GLuint id,
+    GLenum severity,
+    GLsizei length,
+    const GLchar* message,
+    const void* userParam)
+{
+    fprintf(stderr, "GL CALLBACK: %s type = 0x%x, severity = 0x%x, message = %s\n",
+        (type == GL_DEBUG_TYPE_ERROR ? "** GL ERROR **" : ""),
+        type, severity, message);
+}
+
 void Application::Run()
 {
     Window GLFW(800, 600);
@@ -37,7 +51,7 @@ void Application::Run()
     VertexBuffer* VBO = new VertexBuffer(vertices, 4 * 2 * sizeof(GLfloat));
     IndexBuffer* IBO = new IndexBuffer(indices, 6);
 
-    Shader shader("assets/shaders/VertexShader.glsl", "assets/shaders/FragmentShader.glsl");
+    Shader shader(vertexShader, fragmentShader);
     shader.Bind();
     shader.SetUniform4f("vertexColor", 1.0f);
 
@@ -45,7 +59,6 @@ void Application::Run()
     glEnableVertexAttribArray(0);
 
     shader.UnBind();
-
     while (!glfwWindowShouldClose(window))
     {
         GLFW.ProcessInput(window);
@@ -54,10 +67,7 @@ void Application::Run()
         glClearColor(0.1f, 0.1f, 0.1f, 1.0f);
 
         shader.Bind();
-        shader.SetUniform1f("vertexColor", 0.2f);
-        shader.SetUniform2f("vertexColor", 0.2f);
-        shader.SetUniform3f("vertexColor", 1.0f);
-        shader.SetUniform4f("vertexColor", 1.0f);
+        shader.SetUniforms("vertexColor", 0.2f, 0.2f, 1.0f, 1.0f);
         glBindVertexArray(VAO);
         glDrawElements(GL_LINE_STRIP, 6, GL_UNSIGNED_INT, nullptr);
 

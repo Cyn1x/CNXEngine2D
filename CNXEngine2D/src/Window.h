@@ -18,6 +18,6 @@ public:
 	static void FramebufferSizeCallback(GLFWwindow* window, int width, int height);
 	GLFWwindow* GetWindow();
 private:
-	GLint InitGlad();
 	GLint CreateWindow();
+	GLint InitGlad();
 };

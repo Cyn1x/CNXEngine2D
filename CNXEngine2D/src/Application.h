@@ -9,6 +9,9 @@
 #include "IndexBuffer.h"
 #include "Shader.h"
 
+#define vertexShader "assets/shaders/VertexShader.glsl"
+#define fragmentShader "assets/shaders/FragmentShader.glsl"
+
 class Application
 {
 private:

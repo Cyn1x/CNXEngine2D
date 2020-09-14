@@ -98,6 +98,11 @@ void Shader::SetDefaultShaders()
         m_UniformFloats.push_back(1.0f);
 }
 
+void Shader::SetUniforms(const std::string& name, GLfloat u1f, GLfloat u2f, GLfloat u3f, GLfloat u4f)
+{
+    glUniform4f(GetUniformLocation(name), u1f, u2f, u3f, u4f);
+}
+
 void Shader::SetUniform1f(const std::string& name, GLfloat value)
 {
     m_UniformFloats[0] = value;

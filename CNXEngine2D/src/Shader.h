@@ -22,6 +22,7 @@ public:
 	void Bind();
 	void UnBind();
 	void SetDefaultShaders();
+	void SetUniforms(const std::string& name, GLfloat u1f, GLfloat u2f, GLfloat u3f, GLfloat u4f);
 	void SetUniform1f(const std::string& name, GLfloat value);
 	void SetUniform2f(const std::string& name, GLfloat value);
 	void SetUniform3f(const std::string& name, GLfloat value);

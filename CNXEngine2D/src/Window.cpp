@@ -17,20 +17,10 @@ Window::~Window()
     glfwTerminate();
 }
 
-GLint Window::InitGlad()
-{
-    if (!gladLoadGLLoader((GLADloadproc)glfwGetProcAddress))
-    {
-        std::cout << "Failed to initialize GLAD" << std::endl;
-        return -1;
-    }
-
-    return 0;
-}
-
 GLint Window::CreateWindow()
 {
     m_Window = glfwCreateWindow(m_ScreenWidth, m_ScreenHeight, "CNXEngine2D", NULL, NULL);
+
     if (m_Window == NULL)
     {
         std::cout << "Failed to create GLFW window" << std::endl;
@@ -40,6 +30,17 @@ GLint Window::CreateWindow()
 
     glfwMakeContextCurrent(m_Window);
     glfwSetFramebufferSizeCallback(m_Window, FramebufferSizeCallback);
+
+    return 0;
+}
+
+GLint Window::InitGlad()
+{
+    if (!gladLoadGLLoader((GLADloadproc)glfwGetProcAddress))
+    {
+        std::cout << "Failed to initialize GLAD" << std::endl;
+        return -1;
+    }
 
     return 0;
 }
