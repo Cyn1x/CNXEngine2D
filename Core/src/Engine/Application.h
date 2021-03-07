@@ -18,8 +18,7 @@ private:
 
 public:
 	Application();
-	~Application();
-
+	virtual ~Application();
 	void Run();
 	static void GLAPIENTRY MessageCallback(
 		GLenum source,
