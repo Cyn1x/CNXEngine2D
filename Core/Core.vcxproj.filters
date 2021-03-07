@@ -18,57 +18,57 @@
     <ClCompile Include="lib\glad.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\Engine\Application.cpp">
+    <ClCompile Include="src\Core\Application.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\Engine\EntryPoint.h">
+    <ClCompile Include="src\Core\EntryPoint.h">
       <Filter>Header Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\Engine\IndexBuffer.cpp">
+    <ClCompile Include="src\Core\IndexBuffer.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\Engine\Quadtree.cpp">
+    <ClCompile Include="src\Core\Renderer.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\Engine\Renderer.cpp">
+    <ClCompile Include="src\Core\Shader.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\Engine\Shader.cpp">
+    <ClCompile Include="src\Core\VertexArray.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\Engine\VertexArray.cpp">
+    <ClCompile Include="src\Core\VertexBuffer.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\Engine\VertexBuffer.cpp">
+    <ClCompile Include="src\Core\Window.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\Engine\Window.cpp">
+    <ClCompile Include="src\Physics\Quadtree.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="src\Engine\Application.h">
+    <ClInclude Include="src\Core\Application.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\Engine\IndexBuffer.h">
+    <ClInclude Include="src\Core\IndexBuffer.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\Engine\Quadtree.h">
+    <ClInclude Include="src\Core\Renderer.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\Engine\Renderer.h">
+    <ClInclude Include="src\Core\Shader.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\Engine\Shader.h">
+    <ClInclude Include="src\Core\VertexArray.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\Engine\VertexArray.h">
+    <ClInclude Include="src\Core\VertexBuffer.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\Engine\VertexBuffer.h">
+    <ClInclude Include="src\Core\Window.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\Engine\Window.h">
+    <ClInclude Include="src\Physics\Quadtree.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
