@@ -92,26 +92,26 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="src\Engine\Application.cpp" />
-    <ClCompile Include="src\Engine\EntryPoint.h" />
-    <ClCompile Include="src\Engine\Shader.cpp" />
+    <ClCompile Include="src\Core\Application.cpp" />
+    <ClCompile Include="src\Core\EntryPoint.h" />
+    <ClCompile Include="src\Core\Shader.cpp" />
     <ClCompile Include="src\Physics\Quadtree.cpp" />
-    <ClCompile Include="src\Engine\IndexBuffer.cpp" />
-    <ClCompile Include="src\Engine\Renderer.cpp" />
+    <ClCompile Include="src\Core\IndexBuffer.cpp" />
+    <ClCompile Include="src\Core\Renderer.cpp" />
     <ClCompile Include="lib\glad.c" />
-    <ClCompile Include="src\Engine\VertexBuffer.cpp" />
-    <ClCompile Include="src\Engine\VertexArray.cpp" />
-    <ClCompile Include="src\Engine\Window.cpp" />
+    <ClCompile Include="src\Core\VertexBuffer.cpp" />
+    <ClCompile Include="src\Core\VertexArray.cpp" />
+    <ClCompile Include="src\Core\Window.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="src\Engine\Application.h" />
-    <ClInclude Include="src\Engine\Shader.h" />
+    <ClInclude Include="src\Core\Application.h" />
+    <ClInclude Include="src\Core\Shader.h" />
     <ClInclude Include="src\Physics\Quadtree.h" />
-    <ClInclude Include="src\Engine\IndexBuffer.h" />
-    <ClInclude Include="src\Engine\Renderer.h" />
-    <ClInclude Include="src\Engine\VertexBuffer.h" />
-    <ClInclude Include="src\Engine\VertexArray.h" />
-    <ClInclude Include="src\Engine\Window.h" />
+    <ClInclude Include="src\Core\IndexBuffer.h" />
+    <ClInclude Include="src\Core\Renderer.h" />
+    <ClInclude Include="src\Core\VertexBuffer.h" />
+    <ClInclude Include="src\Core\VertexArray.h" />
+    <ClInclude Include="src\Core\Window.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
